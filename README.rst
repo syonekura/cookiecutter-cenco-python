@@ -36,7 +36,7 @@ Then:
 
 * Create a repo and put it there.
 * Install the dev requirements into a conda env. (``conda create env -f
-requirements_dev.yml``)
+  requirements_dev.yml``)
 * Release your package by pushing a new tag to master.
 * Add a `requirements.txt` file that specifies the packages you will need for
   your project and their versions. For more info see the `pip docs for requirements files`_.
