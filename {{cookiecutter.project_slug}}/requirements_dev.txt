@@ -10,3 +10,4 @@ pytest-runner==4.2
 pytest-cov==2.5.1
 {% if cookiecutter.command_line_interface == 'Click' -%}
 click==6.7{% endif %}
+beautifulsoup4==4.6.0

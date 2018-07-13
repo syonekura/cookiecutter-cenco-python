@@ -1,0 +1,41 @@
+queue: 'Hosted Linux Preview'
+steps:
+  -
+    task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      architecture: 'x64'
+    displayName: 'Use Python Version 3.6'
+
+  -
+    script: "python -m pip install --upgrade pip && pip install -r
+    requirements_dev.txt"
+    displayName: 'Install requirements'
+
+  -
+    script: "pip install pytest && pytest tests --doctest-modules
+    --junitxml=build/junit/test-results.xml
+    --cov-report=xml:build/coverage.xml
+    --cov-report=html:build/htmlcov/"
+    displayName: 'PyTest'
+
+  -
+    script: "python vsts/fix_style.py"
+    displayName: 'Fix Test report CSS Style'
+
+  -
+    task: PublishTestResults@2
+    inputs:
+      testResultsFiles: 'build/**/test-*.xml'
+      testRunTitle: 'Test results for Python $(python.version)'
+    displayName: 'Publish Test Results'
+
+  -
+    task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: 'build/**/coverage.xml'
+      reportDirectory: 'build/**/htmlcov'
+      additionalCodeCoverageFiles: 'build/**/htmlcov/**/*.*'
+      failIfCoverageEmpty: true
+    displayName: 'Publish Code Coverage Results'
