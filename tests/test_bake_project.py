@@ -125,7 +125,7 @@ def test_make_help(cookies):
 
 
 def test_using_pytest(cookies):
-    with bake_in_temp_dir(cookies, extra_context={'use_pytest': 'y'}) as result:
+    with bake_in_temp_dir(cookies) as result:
         assert result.project.isdir()
         test_file_path = result.project.join('tests/test_python_boilerplate.py')
         lines = test_file_path.readlines()
@@ -134,15 +134,6 @@ def test_using_pytest(cookies):
         run_inside_dir('python setup.py pytest', str(result.project)) == 0
         # Test the test alias (which invokes pytest)
         run_inside_dir('python setup.py test', str(result.project)) == 0
-
-
-def test_not_using_pytest(cookies):
-    with bake_in_temp_dir(cookies) as result:
-        assert result.project.isdir()
-        test_file_path = result.project.join('tests/test_python_boilerplate.py')
-        lines = test_file_path.readlines()
-        assert "import unittest" in ''.join(lines)
-        assert "import pytest" not in ''.join(lines)
 
 
 def test_bake_with_no_console_script(cookies):

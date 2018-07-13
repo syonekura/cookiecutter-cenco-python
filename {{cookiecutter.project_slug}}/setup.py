@@ -19,16 +19,13 @@ requirements = [
 ]
 
 setup_requirements = [
-{%- if cookiecutter.use_pytest == 'y' %}
-    'pytest-runner',
-{%- endif %}
+    'pytest-runner'
     # TODO: put setup requirements (distutils extensions, etc.) here
 ]
 
 test_requirements = [
-{%- if cookiecutter.use_pytest == 'y' %}
     'pytest',
-{%- endif %}
+    'pytest-cov'
     # TODO: put package test requirements here
 ]
 
