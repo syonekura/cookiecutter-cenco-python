@@ -36,13 +36,16 @@ Quickstart
 
       cookiecutter https://github.com/syonekura/cookiecutter-cenco-python
 
-- Create a repo and put it there:
+- Create a repo and put it there::
 
       cd your_project
       git init .
 
 - Start a new environment and install all your dependencies there using
-  `pipenv install`. This will keep track of every dependency in the Pipfile
+  `pipenv install`. This will keep track of every dependency in the Pipfile::
+
+      pipenv shell
+      pipenv install ...
 
 .. _`pip docs for requirements files`: https://pip.pypa.io/en/stable/user_guide/#requirements-files
 
