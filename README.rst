@@ -1,6 +1,6 @@
-======================
+===========================
 Cookiecutter Python Project
-======================
+===========================
 
 Cookiecutter_ template for a Python package.
 
@@ -10,7 +10,8 @@ Cookiecutter_ template for a Python package.
 Features
 --------
 
-* Testing setup with ``unittest`` and ``python setup.py test`` or ``py.test``
+* Continuous Integration with VSTS
+* Testing setup with ``py.test``
 * Tox_ testing: Setup to easily test for Python 2.6, 2.7, 3.3, 3.4, 3.5, 3.6
 * Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_
 * Bumpversion_: Pre-configured version bumping with a single command
@@ -21,25 +22,27 @@ Features
 Quickstart
 ----------
 
-Install Pyhton using the Anaconda/Miniconda distribution.
+- Install Python
 
-Install the latest Cookiecutter if you haven't installed it yet
-(this requires Cookiecutter 1.4.0 or higher)::
+- Install the latest Cookiecutter if you haven't installed it yet::
 
     pip install -U cookiecutter
 
-Generate a Python package project::
+- Install Pipenv::
 
-    cookiecutter https://github.com/syonekura/cookiecutter-cenco-python
+    pip install pipenv
 
-Then:
+- Generate a Python package project::
 
-* Create a repo and put it there.
-* Install the dev requirements into a conda env. (``conda create env -f
-  requirements_dev.yml``)
-* Release your package by pushing a new tag to master.
-* Add a `requirements.txt` file that specifies the packages you will need for
-  your project and their versions. For more info see the `pip docs for requirements files`_.
+      cookiecutter https://github.com/syonekura/cookiecutter-cenco-python
+
+- Create a repo and put it there:
+
+      cd your_project
+      git init .
+
+- Start a new environment and install all your dependencies there using
+  `pipenv install`. This will keep track of every dependency in the Pipfile
 
 .. _`pip docs for requirements files`: https://pip.pypa.io/en/stable/user_guide/#requirements-files
 

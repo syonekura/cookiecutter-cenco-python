@@ -8,16 +8,19 @@ steps:
     displayName: 'Use Python Version 3.6'
 
   -
-    script: "python -m pip install --upgrade pip && pip install -r
-    requirements_dev.txt"
-    displayName: 'Install requirements'
+    script: "python -m pip install --upgrade pip && pip install pipenv"
+    displayName: 'Install tools'
 
   -
-    script: "pip install pytest && pytest tests --doctest-modules
+    script: "pipenv install --ignore-pipfile --dev"
+    displayName: "Install Dependencies"
+
+  -
+    script: "pytest tests --doctest-modules
     --junitxml=build/junit/test-results.xml
     --cov-report=xml:build/coverage.xml
     --cov-report=html:build/htmlcov/"
-    displayName: 'PyTest'
+    displayName: 'Run PyTest'
 
   -
     script: "python vsts/fix_style.py"

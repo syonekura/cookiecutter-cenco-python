@@ -1,16 +1,12 @@
-{% for _ in cookiecutter.project_name %}={% endfor %}
-{{ cookiecutter.project_name }}
-{% for _ in cookiecutter.project_name %}={% endfor %}
+# {{ cookiecutter.project_name }}
 
 {{ cookiecutter.project_short_description }}
 
-Features
---------
+## Features
 
 * TODO
 
-Credits
----------
+## Credits
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
