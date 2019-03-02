@@ -13,7 +13,6 @@ Features
 * Continuous Integration with Azure DevOps Pipelines
 * Environment and dependency management with Pipenv_
 * Testing setup with PyTest_
-* Tox_ testing: Setup to easily test for Python 2.7, 3.6, etc
 * Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_
 * Bumpversion_: Pre-configured version bumping with a single command
 * Command line interface using Click_ (optional)
