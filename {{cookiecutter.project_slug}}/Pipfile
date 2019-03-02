@@ -6,11 +6,9 @@ verify_ssl = true
 bumpversion = "*"
 flake8 = "*"
 tox = "*"
-{%- if cookiecutter.use_pytest == 'y' %}
 pytest = "*"
 pytest-runner = "*"
 pytest-cov
-{%- endif %}
 Sphinx = "*"
 
 [packages]
