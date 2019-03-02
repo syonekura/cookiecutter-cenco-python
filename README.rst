@@ -10,8 +10,8 @@ Cookiecutter_ template for a Python package.
 Features
 --------
 
-* Continuous Integration with VSTS
-* Pipenv_ support
+* Continuous Integration with Azure DevOps Pipelines
+* Environment and dependency management with Pipenv_
 * Testing setup with PyTest_
 * Tox_ testing: Setup to easily test for Python 2.7, 3.6, etc
 * Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_
@@ -42,11 +42,12 @@ Quickstart
       cd your_project
       git init .
 
-- Start a new environment and install all your dependencies there using
-  `pipenv install`. This will keep track of every dependency in the Pipfile::
+- Install your dependencies there using `pipenv install`. This will keep
+  track of every dependency in the Pipfile::
 
+      pipenv install --dev # This will install default packages
+      pipenv install <your specific dependencies>
       pipenv shell
-      pipenv install ...
 
 
 .. _Pipenv: https://pipenv.readthedocs.io/en/latest/

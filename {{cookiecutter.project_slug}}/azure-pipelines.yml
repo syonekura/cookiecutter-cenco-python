@@ -1,40 +1,32 @@
-queue: 'Hosted Linux Preview'
 steps:
-  -
-    task: UsePythonVersion@0
+  - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
     displayName: 'Use Python Version 3.6'
 
-  -
-    script: "python -m pip install --upgrade pip && pip install pipenv"
+  - script: "python -m pip install --upgrade pip && pip install pipenv"
     displayName: 'Install tools'
 
-  -
-    script: "pipenv install --ignore-pipfile --dev"
+  - script: "pipenv install --ignore-pipfile --dev"
     displayName: "Install Dependencies"
 
-  -
-    script: "pytest tests --doctest-modules
+  - script: "pipenv run pytest tests --doctest-modules
     --junitxml=build/junit/test-results.xml
     --cov-report=xml:build/coverage.xml
     --cov-report=html:build/htmlcov/"
     displayName: 'Run PyTest'
 
-  -
-    script: "python vsts/fix_style.py"
+  - script: "pipenv run python vsts/fix_style.py"
     displayName: 'Fix Test report CSS Style'
 
-  -
-    task: PublishTestResults@2
+  - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'build/**/test-*.xml'
-      testRunTitle: 'Test results for Python $(python.version)'
+      testRunTitle: 'Test results for build'
     displayName: 'Publish Test Results'
 
-  -
-    task: PublishCodeCoverageResults@1
+  - task: PublishCodeCoverageResults@1
     inputs:
       codeCoverageTool: 'cobertura'
       summaryFileLocation: 'build/**/coverage.xml'
